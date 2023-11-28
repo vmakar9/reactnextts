@@ -1,13 +1,15 @@
 "use client"
-import {useEffect} from "react";
+import {User} from "@/app/(main-layout)/users/components/User";
+import {FC, PropsWithChildren, useEffect} from "react";
+import {IUser} from "@/interfaces/user.interface";
 import {useAppDispatch, useAppSelector} from "@/hooks/reduxHooks";
 import {userActions} from "@/redux/slices/usersSlice";
-import {User} from "@/app/(main-layout)/users/components/User";
 
 
-const Users =()=>{
-    const {users} =useAppSelector(state => state.users)
-    const dispatch = useAppDispatch()
+
+const Users= ()=>{
+     const dispatch = useAppDispatch();
+     const {users} = useAppSelector(state => state.users)
     useEffect(() => {
         dispatch(userActions.getAll())
     }, [dispatch]);
